@@ -23,14 +23,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  * }
  */
 function removeKFromList(l, k) {
-  let arr = [];
-  for (let i = 0; i < l.length; i++) {
-    if (l[i] !== k) {
-      arr.push(l[i]);
+
+    if (l.value === k) {
+      l = l.next;
     }
-  }
-  return arr;
+
+    let list = l;
+    while (list.next) {
+      list.next.value === k ? list.next = list.next.next : list = list.next;
+      }
+
+    return l;
 }
+
+
 
 console.log(removeKFromList([3, 1, 2, 3, 4, 5], 3));
 
